@@ -22,12 +22,15 @@ graphic_eq
 
                     </ul>
                     <ul class="navbar-nav mt-2 mt-lg-0" v-if="!user">
-                        <li class="nav-item mr-2 mb-3 mb-lg-0">
-                            <a class="btn btn-dark" href="/register">Sign up</a>
-                        </li>
-                        <li class="nav-item">
+                       <div class="row">
+                            <div class="col">
+                            <a class="btn btn-dark" href="/register">SignUp</a>
+                            </div>
+                            <div class="col">
                             <a class="btn btn-danger" href="/login">Login</a>
-                        </li>
+                            </div>
+                        </div>
+                        
                     </ul>
                     <ul class="navbar-nav mt-2 mt-lg-0" v-else>
                         <li class="nav-item">
