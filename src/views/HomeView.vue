@@ -303,7 +303,7 @@ export default {
                     };
 
                     this.mediaRecorder.onstop = () => {
-                        this.audioBlob = new Blob(this.chunks, { type: 'audio/wav' });
+                        this.audioBlob = new Blob(this.chunks, { type: 'audio/mp3' });
                         this.audioUrl = URL.createObjectURL(this.audioBlob);
                         this.recorded = true;
 
