@@ -5,12 +5,7 @@
   </nav> -->
   <router-view/>
 </template>
-<scritpt>
-import axios from '../axios';
-async created(){
-  await axios.get("/")
-}
-</script>
+
 <style lang="scss">
 
 </style>
