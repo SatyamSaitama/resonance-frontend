@@ -30,7 +30,6 @@
                                                     v-model="password">
                                             </div>
                                             <button type="submit" class="btn btn-theme">Login</button>
-                                            <a href="#l" class="forgot-link float-right text-primary">Forgot password?</a>
                                         </form>
                                     </div>
                                 </div>
