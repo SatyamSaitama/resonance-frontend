@@ -10,12 +10,15 @@ graphic_eq
                 </a>
                 
                     <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-                        <li class="nav-item active">
+                        <div class="row">
+                            <div class="col">
                             <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
-                        </li>
-                        <li class="nav-item">
+                            </div>
+                            <div class="col">
                             <a class="nav-link" href="/history">History</a>
-                        </li>
+                            </div>
+                        </div>
+                        
                         <!-- <li class="nav-item">
                             <a class="nav-link" href="features.html">Features</a>
                         </li> -->
