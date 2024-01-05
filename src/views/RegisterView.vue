@@ -91,6 +91,7 @@
                 },4000);
                 
                }
+               this.$router.push('/');
                
                
             } catch (error) {
