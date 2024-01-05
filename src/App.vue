@@ -8,7 +8,7 @@
 <scritpt>
 import axios from '../axios';
 async created(){
-  axios.get("/")
+  await axios.get("/")
 }
 </script>
 <style lang="scss">
