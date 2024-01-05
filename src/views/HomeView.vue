@@ -1,4 +1,5 @@
 <template>
+    
     <header class="foi-header landing-header">
         <div class="container">
             <nav class="navbar navbar-expand-lg navbar-light foi-navbar">
@@ -7,11 +8,7 @@
 graphic_eq
 </span>
                 </a>
-                <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse"
-                    data-target="#collapsibleNavId" aria-controls="collapsibleNavId" aria-expanded="false"
-                    aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+                
                 <div class="collapse navbar-collapse" id="collapsibleNavId">
                     <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
                         <li class="nav-item active">
@@ -87,10 +84,21 @@ graphic_eq
         <section id="recorder-section">
             <div class="card" id="recorder">
                 <div class="card-body">
-                    <div id="typedtext">Transcribe,Translate,Analyze,.....</div>
+                    <div class="row" v-if="!user">
+                        <div class="nav-item mr-2 mb-3 mb-lg-0">
+                            <a class="btn btn-light" href="/register">Sign up</a>
+                        </div>
+                        <div class="nav-item">
+                            <a class="btn btn-light" href="/login">Login</a>
+                        </div>
+                    </div>
+                
+                    <div id="typedtext"></div>
+                    <button @click ="exampleClick()" v-if="clickFlag">click</button>
                     <div class="spinner-border" role="status" v-if="flag">
   <span class="visually-hidden"></span>
-</div>
+
+</div>          
                     <audio ref="audioPlayer" :src="audioUrl"></audio>
                     <div class="row text-right">
                         <canvas ref="audioVisualizer" id="audio-visualization" width="300" height="50"></canvas>
@@ -225,7 +233,9 @@ export default {
             analysis: false,
             transcripted: false,
             aText: [],
-            flag : false
+            flag : false,
+            clickFlag : false
+            
 
 
 
@@ -237,10 +247,9 @@ export default {
             const response = await axios.get('user')
             this.$store.dispatch('user', response.data.user)
             this.user = response.data.user
-            this.typewriter(`👋 Welcome ${this.user.username} to the 🎵 REsonance. To get started, click on the 📤 Upload button or 🎙️ Record button to transcribe your text.`, 1)
+            this.typewriter(`👋 Welcome ${this.user.username} to the 🎵 Resonance. To get started, click on the 📤 Upload button or 🎙️ Record button to transcribe your text.`, 1)
 
         } catch (error) {
-            this.typewriter("Log In to continue", 3)
             console.log("Log In to continue")
         }
 
@@ -262,6 +271,11 @@ export default {
             // Set an interval to update the text every 2000 milliseconds (2 seconds)
             setInterval(moveText, 2000);
         },
+        exampleClick(){
+            this.$router.push("/history")
+            console.log("clicked")
+        },
+
         togglePlay() {
             const audioElement = this.$refs.audioPlayer;
             this.setupAudioVisualizer()
@@ -343,7 +357,7 @@ export default {
                 while (iRow < iIndex) {
                     sContents += this.aText[iRow++] + '<br />';
                 }
-                destination.innerHTML = sContents + this.aText[iIndex].substring(0, iTextPos+1) + "_";
+                destination.innerHTML = sContents + this.aText[iIndex].substring(0, iTextPos+1) + ".";
                 if (iTextPos++ == iArrLength) {
                     iTextPos = 0;
                     iIndex++;
