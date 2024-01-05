@@ -91,7 +91,7 @@
                 },4000);
                 
                }
-               this.$router.push('/');
+               this.$router.push('/login');
                
                
             } catch (error) {
