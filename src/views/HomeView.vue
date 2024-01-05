@@ -9,7 +9,6 @@ graphic_eq
 </span>
                 </a>
                 
-                <div class="collapse navbar-collapse" id="collapsibleNavId">
                     <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
                         <li class="nav-item active">
                             <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
@@ -35,7 +34,7 @@ graphic_eq
                             <button @click="logout()" class="btn btn-light">Logout</button>
                         </li>
                     </ul>
-                </div>
+                
             </nav>
             <div class="header-content" v-if="!user">
                 <div class="row">
