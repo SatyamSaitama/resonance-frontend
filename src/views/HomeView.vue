@@ -82,6 +82,7 @@
                     most similar users.</li>
             </ul>
         </div>
+        <img src="https://images.openai.com/blob/10d12b3a-06df-42d9-898b-df308077ad92/asr-training-data-desktop.svg?width=10&height=10&quality=50" style="width:100%">
     </div>
 
 
