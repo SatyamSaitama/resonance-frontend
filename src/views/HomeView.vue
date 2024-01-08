@@ -82,8 +82,7 @@
                     most similar users.</li>
             </ul>
         </div>
-        <img src="https://images.openai.com/blob/10d12b3a-06df-42d9-898b-df308077ad92/asr-training-data-desktop.svg?width=10&height=10&quality=50" style="width:100%">
-    </div>
+ <img src="https://images.openai.com/blob/29f82291-67a2-491f-b588-58d310d87318/asr-training-data-mobile.svg?width=10&amp;height=10&amp;quality=50" width="100%"  alt="ASR training data inputs and outputs" loading="lazy" data-nuxt-img="" sizes="(max-width: 744px) 100vw, (max-width: 1280px) 100vw, (max-width: 1440px) 100vw, 100vw" aria-hidden="false" class="w-full">    </div>
 
 
     <div class="container ">
