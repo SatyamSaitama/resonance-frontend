@@ -29,7 +29,7 @@
                             <a id="signup-btn" class="btn btn-dark" href="/register">SignUp</a>
                         </div>
                         <div class="col">
-                            <a class="btn btn-danger" href="/login">Login</a>
+                            <a class="btn btn-danger login-btn" href="/login">Login</a>
                         </div>
                     </div>
 
@@ -745,7 +745,7 @@ audio {
     margin-right: 10px;
     /* Adjust as needed */
 }
-#signup-btn{
+#signup-btn .login-btn{
     padding: 5px;
 }
 /* Style for the play button */
