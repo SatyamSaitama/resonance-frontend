@@ -1,46 +1,45 @@
 <template>
-    
     <header class="foi-header landing-header">
         <div class="container">
             <nav class="navbar navbar-expand-lg navbar-light foi-navbar">
                 <a class="navbar-brand" href="/">
                     <span class="material-symbols-outlined">
-graphic_eq
-</span>
+                        graphic_eq
+                    </span>
                 </a>
-                
-                    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-                        <div class="row">
-                            <div class="col">
+
+                <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                    <div class="row">
+                        <div class="col">
                             <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
-                            </div>
-                            <div class="col">
-                            <a class="nav-link" href="/history">History</a>
-                            </div>
                         </div>
-                        
-                        <!-- <li class="nav-item">
+                        <div class="col">
+                            <a class="nav-link" href="/history">History</a>
+                        </div>
+                    </div>
+
+                    <!-- <li class="nav-item">
                             <a class="nav-link" href="features.html">Features</a>
                         </li> -->
 
-                    </ul>
-                    <ul class="navbar-nav mt-2 mt-lg-0" v-if="!user">
-                       <div class="row">
-                            <div class="col">
+                </ul>
+                <ul class="navbar-nav mt-2 mt-lg-0" v-if="!user">
+                    <div class="row">
+                        <div class="col">
                             <a class="btn btn-dark" href="/register">SignUp</a>
-                            </div>
-                            <div class="col">
-                            <a class="btn btn-danger" href="/login">Login</a>
-                            </div>
                         </div>
-                        
-                    </ul>
-                    <ul class="navbar-nav mt-2 mt-lg-0" v-else>
-                        <li class="nav-item">
-                            <button @click="logout()" class="btn btn-light">Logout</button>
-                        </li>
-                    </ul>
-                
+                        <div class="col">
+                            <a class="btn btn-danger" href="/login">Login</a>
+                        </div>
+                    </div>
+
+                </ul>
+                <ul class="navbar-nav mt-2 mt-lg-0" v-else>
+                    <li class="nav-item">
+                        <button @click="logout()" class="btn btn-light">Logout</button>
+                    </li>
+                </ul>
+
             </nav>
             <div class="header-content" v-if="!user">
                 <div class="row">
@@ -68,7 +67,8 @@ graphic_eq
         <div class="mt-3" id="custom-keyFeatures">
             <p class="custom-h5">Key Features:</p>
             <ul class="custom-ul">
-                <li class="custom-li"><strong>Speech-to-Text:</strong> Accepts speech input and transcribes it any language audio with <b>high accuracy</b>.
+                <li class="custom-li"><strong>Speech-to-Text:</strong> Accepts speech input and transcribes it any language
+                    audio with <b>high accuracy</b>.
                 </li>
                 <li class="custom-li"><strong>Multilingual Translation:</strong> Automatically translates transcriptions to
                     English if the spoken language is different.</li>
@@ -89,21 +89,27 @@ graphic_eq
         <section id="recorder-section">
             <div class="card" id="recorder">
                 <div class="card-body">
-                    <div class="row" v-if="!user">
-                        <div class="nav-item mr-2 mb-3 mb-lg-0">
-                            <a class="btn btn-light" href="/register">Sign up</a>
-                        </div>
-                        <div class="nav-item">
-                            <a class="btn btn-light" href="/login">Login</a>
-                        </div>
-                    </div>
-                
-                    <div id="typedtext"></div>
-                    <button @click ="exampleClick()" v-if="clickFlag">click</button>
-                    <div class="spinner-border" role="status" v-if="flag">
-  <span class="visually-hidden"></span>
+                    
+                    <!-- <div class="row" v-if="!user">
+    
+                 <div class="nav-item">
+                            <a  href="/login">Login</a>
+                        </div> to continue
+                    </div> -->
 
-</div>          
+                    <div id="typedtext"></div>
+                    
+                
+                    <button @click="exampleClick()" v-if="clickFlag">click</button>
+                    <div class="spinner-border" role="status" v-if="flag">
+                        <span class="visually-hidden"></span>
+                        
+
+                    </div>
+                    <span v-if="transcript" style="cursor: pointer;"  @click="copyToClipboard" class="material-symbols-outlined">
+                        {{ buttonText }}
+                    </span>
+
                     <audio ref="audioPlayer" :src="audioUrl"></audio>
                     <div class="row text-right">
                         <canvas ref="audioVisualizer" id="audio-visualization" width="300" height="50"></canvas>
@@ -238,9 +244,12 @@ export default {
             analysis: false,
             transcripted: false,
             aText: [],
-            flag : false,
-            clickFlag : false
-            
+            flag: false,
+            clickFlag: false,
+            textToCopy: "",
+            buttonText: "content_copy",
+            copied: false,
+
 
 
 
@@ -256,6 +265,8 @@ export default {
 
         } catch (error) {
             console.log("Log In to continue")
+            this.typewriter(`<a href="/login" style="text-decoration:green">Login</a>
+                      to continue`)
         }
 
     },
@@ -263,6 +274,33 @@ export default {
         ...mapGetters(['isLoggedIn']),
     },
     methods: {
+        copyToClipboard() {
+
+            const textarea = document.createElement("textarea");
+            textarea.value = this.textToCopy;
+            document.body.appendChild(textarea);
+
+            // Select the text in the textarea
+            textarea.select();
+            textarea.setSelectionRange(0, 99999); // For mobile devices
+
+            // Copy the selected text to the clipboard
+            document.execCommand("copy");
+
+            // Remove the textarea from the document
+            document.body.removeChild(textarea);
+
+            // Update the button text and state
+            this.buttonText = "done";
+            this.copied = true;
+
+            // Reset button text and state after a brief delay
+            setTimeout(() => {
+                this.buttonText = "content_copy";
+                this.copied = false;
+            }, 1500);
+        },
+
         movingText() {
             let component = document.getElementById('moving-text');
             const list = ['Analyze!', 'Translate!', 'Compare!', 'Transcribe!'];
@@ -276,7 +314,7 @@ export default {
             // Set an interval to update the text every 2000 milliseconds (2 seconds)
             setInterval(moveText, 2000);
         },
-        exampleClick(){
+        exampleClick() {
             this.$router.push("/history")
             console.log("clicked")
         },
@@ -343,9 +381,9 @@ export default {
             var iIndex;
             var iSpeed = speed; // time delay of print out
             if (this.aText.length === 0) {
-                 iIndex = 0
+                iIndex = 0
             } else {
-                 iIndex = this.aText.length - 1
+                iIndex = this.aText.length - 1
             }
             var iArrLength = this.aText[0].length - 1; // the length of the text array
             var iScrollAt = 20; // start scrolling up at this many lines
@@ -362,7 +400,7 @@ export default {
                 while (iRow < iIndex) {
                     sContents += this.aText[iRow++] + '<br />';
                 }
-                destination.innerHTML = sContents + this.aText[iIndex].substring(0, iTextPos+1) + ".";
+                destination.innerHTML = sContents + this.aText[iIndex].substring(0, iTextPos + 1) + ".";
                 if (iTextPos++ == iArrLength) {
                     iTextPos = 0;
                     iIndex++;
@@ -458,7 +496,7 @@ export default {
             this.transcript = '';
             this.language = '';
             this.aText = [],
-            this.uploaded_file = ''
+                this.uploaded_file = ''
 
 
         },
@@ -480,7 +518,7 @@ export default {
                 }, 3000);
                 await axios.post('processAudio', formData)
                     .then(async (response) => {
-                        this.flag=false
+                        this.flag = false
                         // Handle the response (processed audio) as needed
                         await this.typewriter("Audio Processing Completed✅", 1)
                         // this.aText = []
@@ -489,6 +527,7 @@ export default {
                         this.language = response.data.language;
                         await this.typewriter(`${this.transcript} [${this.language}] `, 1);
                         this.analyze();
+                        this.textToCopy = this.transcript
                     })
                     .catch(() => {
                         this.typewriter('Error sending audio to backend:', 1);
@@ -529,6 +568,8 @@ export default {
                 this.language = response.data.language;
                 this.analyze();
                 this.transcripted = true
+                this.textToCopy = this.transcript
+
             } catch (error) {
                 console.error('Error sending audio to backend:', error);
             }
