@@ -266,7 +266,7 @@ export default {
         } catch (error) {
             console.log("Log In to continue")
             this.typewriter(`<a href="/login" style="text-decoration:green">Login</a>
-                      to continue`)
+                      to continue`,1)
         }
 
     },
