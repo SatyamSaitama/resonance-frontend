@@ -3,6 +3,7 @@ import HomeView from "../views/HomeView.vue";
 import loginView from "../views/LoginView";
 import registerView from '../views/RegisterView'
 import historyView from '../views/HistoryView'
+import redirectPage from '../views/RedirectView'
 const routes = [
   {
     path: "/",
@@ -30,6 +31,11 @@ const routes = [
   path :"/history",
   name : "historyView",
   component : historyView
+},
+{
+  path: '/auth/:access_token',
+  name: 'redirectPage',
+  component: redirectPage,
 }
 ];
 
