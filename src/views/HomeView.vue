@@ -584,7 +584,7 @@ export default {
             const response3 = await axios.post('/similar_users', { text: this.transcript });
             this.mostSimilarUsers = response3.data;
         },
-        handleAnalysis() {
+       async handleAnalysis() {
             this.analysis = true;
             await this.analyze()
         }
