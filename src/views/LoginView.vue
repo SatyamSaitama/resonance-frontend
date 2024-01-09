@@ -30,7 +30,12 @@
                                                     v-model="password">
                                             </div>
                                             <button type="submit" class="btn btn-theme">Login</button>
+                                            
                                         </form>
+                                        <br>
+                                        <a @click="google" class="btn btn-light btn-lg btn-block" href="http://127.0.0.1:5000/google_login">
+        <i class="fab fa-google mr-2"></i> Sign in with Google
+                                        </a>
                                     </div>
                                 </div>
                                 <div class="col-lg-6 d-none d-lg-inline-block">
@@ -70,6 +75,12 @@ export default {
         }
     },
     methods: {
+    async google(){
+       const response = await axios.get('google_login')
+       localStorage.setItem('token', response.data.access_token);
+       this.$router.push('/');
+
+    },
         async login() {
             try {
                 const data = {
