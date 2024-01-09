@@ -585,7 +585,8 @@ export default {
             this.mostSimilarUsers = response3.data;
         },
         handleAnalysis() {
-            this.analysis = true
+            this.analysis = true;
+            await this.analyze()
         }
     },
 };
