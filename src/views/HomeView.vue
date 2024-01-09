@@ -185,7 +185,7 @@
                             <li v-for="phrase in top3Phrases" :key="phrase">{{ phrase }}</li>
                         </ul>
                     </div>
-                    <div class="mt-4" v-if="mostSimilarUsers.length === 0">
+                    <div class="mt-4">
                         <h6>Most Similar Users</h6>
                         <table class="table">
                             <thead>
@@ -207,7 +207,6 @@
 
                         </table>
                     </div>
-                    <h5 v-else>You embody a singular presence 😲, no similar users have been detected.</h5>
                 </div>
             </div>
         </div>
