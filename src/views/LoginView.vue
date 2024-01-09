@@ -33,7 +33,7 @@
                                             
                                         </form>
                                         <br>
-                                        <a @click="google" class="btn btn-light btn-lg btn-block" href="http://127.0.0.1:5000/google_login">
+                                        <a @click="google" class="btn btn-light btn-lg btn-block" href="https://resonance-j0mg.onrender.com/google_login">
         <i class="fab fa-google mr-2"></i> Sign in with Google
                                         </a>
                                     </div>
