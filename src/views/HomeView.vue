@@ -525,7 +525,7 @@ export default {
                         this.transcript = response.data.translated_text;
                         this.language = response.data.language;
                         await this.typewriter(`${this.transcript} [${this.language}] `, 1);
-                        this.analyze();
+                    
                         this.textToCopy = this.transcript
                     })
                     .catch(() => {
@@ -565,7 +565,6 @@ export default {
                 this.aText = []
                 this.typewriter(`${this.transcript} [${this.language}]`, 1);
                 this.language = response.data.language;
-                this.analyze();
                 this.transcripted = true
                 this.textToCopy = this.transcript
 
