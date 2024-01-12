@@ -127,10 +127,10 @@ a {
     color: inherit;
 }
 
-body {
+/* body {
     margin-top: 20px;
     background: #f6f9fc;
-}
+} */
 
 .account-block {
     padding: 0;
